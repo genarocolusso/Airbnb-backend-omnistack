@@ -4,11 +4,14 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const path = require("path");
 
-const app = express();
+const app = express(); 
 
+const dotenv = require('dotenv');
+dotenv.config();
+ 
 // user:senha  /nomedabasededados
 mongoose.connect(
-  "mongodb+srv://mongouser:mongodatabasecolusso@cluster0-s9tj0.mongodb.net/omnistack9?retryWrites=true&w=majority",
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-s9tj0.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
